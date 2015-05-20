@@ -1,0 +1,25 @@
+{
+  "name": "CCI",
+  "version": "1.0.0",
+  "description": "Javascript Solutions to Cracking the Coding Interview",
+  "main": "chapterOne.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjatkinson2/CCI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjatkinson2/CCI/issues"
+  },
+  "homepage": "https://github.com/rjatkinson2/CCI",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "sinon": "*",
+    "sinon-chai": "^2.7.0"
+  }
+}
