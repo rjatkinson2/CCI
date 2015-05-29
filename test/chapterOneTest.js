@@ -12,6 +12,7 @@ var uniqueString = uniqueString || methods.uniqueString;
 var reverseString = reverseString || methods.reverseString;
 var anagram = anagram || methods.anagram;
 var replaceSpaces = replaceSpaces || methods.replaceSpaces;
+var compressString = compressString || methods.compressString;
 
 // Write tests below:
 
@@ -62,6 +63,21 @@ describe('Chapter One of Cracking the Coding Interview', function(){
     });
     it('should return the original string if it does not contain spaces', function(){
       expect(replaceSpaces('boogiewoogie')).to.equal('boogiewoogie');
+    });
+  });
+
+  describe('1.5: Compress string', function(){
+    it('should compress repeated characters into a shorthand notation of letter-number', function(){
+      expect(compressString('aabbbcccaaaa')).to.equal('a2b3c3a4');
+    });
+    it('should return the original string if the compressed version is not shorter', function(){
+      expect(compressString('aabbccddeeffgg')).to.equal('aabbccddeeffgg');
+    });
+    it('should handle the case where compression is only more efficient by one character', function(){
+      expect(compressString('aabbccddeeffggg')).to.equal('a2b2c2d2e2f2g3');
+    });
+    it('should handle zero repeated characters', function(){
+      expect(compressString('abcdefghijklmnopqrstuvwxyz')).to.equal('abcdefghijklmnopqrstuvwxyz');
     });
   });
 });

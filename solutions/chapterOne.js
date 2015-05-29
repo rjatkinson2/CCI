@@ -5,6 +5,7 @@ if(module){
   module.exports.reverseString = reverseString;
   module.exports.anagram = anagram;
   module.exports.replaceSpaces = replaceSpaces;
+  module.exports.compressString = compressString;
 }
 
 // Important to know whether ASCII string or a Unicode String
@@ -86,6 +87,25 @@ function replaceSpaces(str){
     }
   }
   return stringArray.join('');
+}
+
+// Using += concatenation or numerical addition only works if the original value is instantiated with the appropriate number or string type.
+
+function compressString(str){
+  var strArray = str.split('');
+  var cl = strArray[0], total = 1, gain = 0, output = "";
+  for(var i = 0; i < strArray.length; i++){
+    if(i !== 0 && cl === strArray[i]){
+      total++;
+    }
+    if(cl !== strArray[i+1]){
+      output += cl + total;
+      cl = strArray[i+1];
+      gain += total - 2;
+      total = 0;
+    }
+  }
+  return gain > 0 ? output : str;
 }
 
 
