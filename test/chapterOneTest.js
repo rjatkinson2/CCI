@@ -1,3 +1,6 @@
+// Require statements and conditional assignments are utilized to permit both node and browser based tests.
+// To test in Node, run 'mocha' in the terminal. To test in the browser, simply open up SpecRunner.html
+
 var require = require || undefined;
 var methods = require ? require('../solutions/chapterOne.js') : undefined;
 
@@ -8,6 +11,9 @@ var assert = assert || require('chai').assert;
 var uniqueString = uniqueString || methods.uniqueString;
 var reverseString = reverseString || methods.reverseString;
 var anagram = anagram || methods.anagram;
+var replaceSpaces = replaceSpaces || methods.replaceSpaces;
+
+// Write tests below:
 
 describe('Chapter One of Cracking the Coding Interview', function(){
   describe('1.1: String has all unique characters', function(){
@@ -47,6 +53,15 @@ describe('Chapter One of Cracking the Coding Interview', function(){
     });
     it('should return true for repeat letters', function(){
       expect(anagram('ffffffff', 'ffffffff')).to.equal(true);
+    });
+  });
+
+  describe('1.4: Space replacement', function(){
+    it('should replace all spaces with %20', function(){
+      expect(replaceSpaces('you sir rock')).to.equal('you%20sir%20rock');
+    });
+    it('should return the original string if it does not contain spaces', function(){
+      expect(replaceSpaces('boogiewoogie')).to.equal('boogiewoogie');
     });
   });
 });

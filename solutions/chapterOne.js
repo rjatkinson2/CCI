@@ -1,11 +1,10 @@
-
-
 var module = module || undefined;
 if(module){
   module.exports = {};
   module.exports.uniqueString = uniqueString;
   module.exports.reverseString = reverseString;
   module.exports.anagram = anagram;
+  module.exports.replaceSpaces = replaceSpaces;
 }
 
 // Important to know whether ASCII string or a Unicode String
@@ -60,3 +59,33 @@ function anagram(s1, s2){
   }
   return true;
 }
+
+// String manipulation works best when editing the string from the end and working backwards since you know that you will always have reference to characters that haven't been overwritten yet.
+// The implementation below is superfluous in order to mimic Java's character array implementation.
+
+function replaceSpaces(str){
+  var length = str.length;
+  var stringArray = str.split("");
+  var spaceCount = 0;
+  for(var i = 0; i < length; i++){
+    if(stringArray[i] === ' '){
+      spaceCount++;
+    }
+  }
+  if(spaceCount === 0) return str;
+  var newLength = length + (spaceCount * 2);
+  for(var j = length - 1; j >= 0; j--){
+    if(stringArray[j] === ' '){
+      stringArray[newLength - 1] = '0';
+      stringArray[newLength - 2] = '2';
+      stringArray[newLength - 3] = '%';
+      newLength = newLength - 3;
+    }else{
+      stringArray[newLength - 1] = stringArray[j];
+      newLength--;
+    }
+  }
+  return stringArray.join('');
+}
+
+
