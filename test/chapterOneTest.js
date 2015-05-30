@@ -13,6 +13,7 @@ var reverseString = reverseString || methods.reverseString;
 var anagram = anagram || methods.anagram;
 var replaceSpaces = replaceSpaces || methods.replaceSpaces;
 var compressString = compressString || methods.compressString;
+var zeroes = zeroes || methods.zeroes;
 
 // Write tests below:
 
@@ -78,6 +79,21 @@ describe('Chapter One of Cracking the Coding Interview', function(){
     });
     it('should handle zero repeated characters', function(){
       expect(compressString('abcdefghijklmnopqrstuvwxyz')).to.equal('abcdefghijklmnopqrstuvwxyz');
+    });
+  });
+
+  describe('1.7: Row and column replace with zeros', function(){
+    it('should find all zero elements in an MxN matrix and replace each isntances entire row and columns with zeroes', function(){
+      expect(zeroes([[1,2,3,8],[0,4,1,14],[2,9,0,7]])).to.deep.equal([[0,2,0,8],[0,0,0,0],[0,0,0,0]]);
+    });
+    it('should return the original array if there are no zeroes', function(){
+      expect(zeroes([[1,2,3,8],[1,4,1,14],[2,9,10000,7]])).to.deep.equal([[1,2,3,8],[1,4,1,14],[2,9,10000,7]]);
+    });
+    it('should return all zeroes if every row or column has at least one zero', function(){
+      expect(zeroes([[1,2,3,0],[0,4,1,14],[2,0,0,7]])).to.deep.equal([[0,0,0,0], [0,0,0,0], [0,0,0,0]]);
+    });
+    it('should not break for duplicate zeroes', function(){
+      expect(zeroes([[0,2,3,0],[0,4,1,14],[0,12,14,3]])).to.deep.equal([[0,0,0,0], [0,0,0,0], [0,0,0,0]]);
     });
   });
 });

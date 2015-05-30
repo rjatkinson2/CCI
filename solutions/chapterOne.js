@@ -6,6 +6,7 @@ if(module){
   module.exports.anagram = anagram;
   module.exports.replaceSpaces = replaceSpaces;
   module.exports.compressString = compressString;
+  module.exports.zeroes = zeroes;
 }
 
 // Important to know whether ASCII string or a Unicode String
@@ -106,6 +107,28 @@ function compressString(str){
     }
   }
   return gain > 0 ? output : str;
+}
+
+// Consider setting booleans at each index for future reference rather than a hash with matching key/values and hasOwnProperty
+
+function zeroes(array){
+  var mHash = {}, nHash = {};
+  for(var n = 0; n < array.length; n++){
+    for(var m = 0; m < array[n].length; m++){
+      if(array[n][m] === 0){
+        mHash[m] = m;
+        nHash[n] = n;
+      }
+    }
+  }
+  for(var y = 0; y < array.length; y++){
+    for(var x = 0; x < array[y].length; x++){
+      if(nHash.hasOwnProperty(y) || mHash.hasOwnProperty(x)){
+        array[y][x] = 0;
+      }
+    }
+  }
+  return array;
 }
 
 
