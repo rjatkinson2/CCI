@@ -26,7 +26,7 @@ function uniqueString(string){
   return true;
 }
 
-// Consider duplicates, 
+// Consider duplicate letters.
 
 function reverseString(string){
   var store;
