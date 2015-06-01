@@ -14,6 +14,7 @@ var anagram = anagram || methods.anagram;
 var replaceSpaces = replaceSpaces || methods.replaceSpaces;
 var compressString = compressString || methods.compressString;
 var zeroes = zeroes || methods.zeroes;
+var isRotation = isRotation || methods.isRotation;
 
 // Write tests below:
 
@@ -94,6 +95,21 @@ describe('Chapter One of Cracking the Coding Interview', function(){
     });
     it('should not break for duplicate zeroes', function(){
       expect(zeroes([[0,2,3,0],[0,4,1,14],[0,12,14,3]])).to.deep.equal([[0,0,0,0], [0,0,0,0], [0,0,0,0]]);
+    });
+  });
+
+  describe('1.8: Check if string is rotation of another string', function(){
+    it('should return true for a valid rotation', function(){
+      expect(isRotation('ttlewaterbo', 'waterbottle')).to.equal(true);
+    });
+    it('should return false for strings of inequal lengths', function(){
+      expect(isRotation('ttlewaterbottle', 'waterbottle')).to.equal(false);
+    });
+    it('should work properly with duplicate characters', function(){
+      expect(isRotation('aaaaaaaaa', 'aaaaaaaaa')).to.equal(true);
+    });
+    it('should work properly with any characters', function(){
+      expect(isRotation('#$@!%^!#@$%', '%^!#@$%#$@!')).to.equal(true);
     });
   });
 });

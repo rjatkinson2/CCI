@@ -7,6 +7,7 @@ if(module){
   module.exports.replaceSpaces = replaceSpaces;
   module.exports.compressString = compressString;
   module.exports.zeroes = zeroes;
+  module.exports.isRotation = isRotation;
 }
 
 // Important to know whether ASCII string or a Unicode String
@@ -131,4 +132,28 @@ function zeroes(array){
   return array;
 }
 
+function isRotation(s1,s2){
+  if(s1.length !== s2.length) return false;
+  var start = [];
+  for(var j=0; j < s2.length; j++){
+    if(s1.charAt(0) === s2.charAt(j)){
+      start.push([0,j]);
+    }
+  }
+  var test = 0, check, offset;
+  for(var k = 0; k < s1.length; k++){
+    offset = (k + start[test][1] - start[test][0]);
+    check = offset < s2.length ? offset : (offset - s2.length);
+    if(s1.charAt(k) !== s2.charAt(check)){
+      test++;
+      k = -1;
+    }
+    if(test >= start.length){
+      return false;
+    }
+    if(check === start[test][1] - 1 || (start[test][1] === 0 && check === s2.length - 1)){
+      return true;
+    }
+  }
+}
 
