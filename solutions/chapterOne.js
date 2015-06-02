@@ -132,28 +132,29 @@ function zeroes(array){
   return array;
 }
 
+
+// For rotation problems, use modulo arithmetic where the length of the item is the modulo so that length-1 is considered but length itself is congruent to zero!
+
+// Modulo for A % B === A where A < B
+
+// Another possible trick is to duplicate the rotated value and then test to see if the non-rotated value is a substring of the bigger value.
+// For example: s1 = waterbottle, s2 = erbottlewat
+// s2 + s2 = erbottlewaterbottlewat
+// check if s1 isSubstring of s2 + s2 => erbottle|waterbottle|wat
+
 function isRotation(s1,s2){
+  var lookup, runner = 0;
   if(s1.length !== s2.length) return false;
-  var start = [];
-  for(var j=0; j < s2.length; j++){
-    if(s1.charAt(0) === s2.charAt(j)){
-      start.push([0,j]);
-    }
-  }
-  var test = 0, check, offset;
-  for(var k = 0; k < s1.length; k++){
-    offset = (k + start[test][1] - start[test][0]);
-    check = offset < s2.length ? offset : (offset - s2.length);
-    if(s1.charAt(k) !== s2.charAt(check)){
-      test++;
-      k = -1;
-    }
-    if(test >= start.length){
-      return false;
-    }
-    if(check === start[test][1] - 1 || (start[test][1] === 0 && check === s2.length - 1)){
+  for(var index = 0; index < s1.length * 2; index++){
+    lookup = index % s1.length;
+    if(s1.charAt(lookup) === s2.charAt(runner)){
+      runner++;
+    }else if(runner === s2.length){
       return true;
+    }else{
+      runner = 0;
     }
   }
+  return false;
 }
 
