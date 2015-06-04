@@ -83,6 +83,12 @@ describe('Chapter One of Cracking the Coding Interview', function(){
     });
   });
 
+  describe('1.6: Rotate image ninety degrees', function(){
+    xit('should rotate image ninety degrees', function(){
+      
+    });
+  });  
+
   describe('1.7: Row and column replace with zeros', function(){
     it('should find all zero elements in an MxN matrix and replace each isntances entire row and columns with zeroes', function(){
       expect(zeroes([[1,2,3,8],[0,4,1,14],[2,9,0,7]])).to.deep.equal([[0,2,0,8],[0,0,0,0],[0,0,0,0]]);

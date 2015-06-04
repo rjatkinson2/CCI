@@ -158,3 +158,26 @@ function isRotation(s1,s2){
   return false;
 }
 
+var a = 1,
+    b = function a(x) {
+        x && a(--x);
+    };
+console.log(a);
+
+
+function a(x) {
+    return x * 2;
+}
+var a;
+console.log(a);
+
+function b(x, y, a) {
+    arguments[2] = 10;
+    alert(a);
+}
+b(1, 2, 3);
+function a() {
+    console.log('testing');
+    alert(this);
+}
+a.call(null);
