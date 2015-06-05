@@ -4,7 +4,7 @@
   "description": "Javascript Solutions to Cracking the Coding Interview",
   "main": "chapterOne.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
