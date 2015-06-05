@@ -13,6 +13,7 @@ var reverseString = reverseString || methods.reverseString;
 var anagram = anagram || methods.anagram;
 var replaceSpaces = replaceSpaces || methods.replaceSpaces;
 var compressString = compressString || methods.compressString;
+var imageRotation = imageRotation || methods.imageRotation;
 var zeroes = zeroes || methods.zeroes;
 var isRotation = isRotation || methods.isRotation;
 
@@ -84,8 +85,11 @@ describe('Chapter One of Cracking the Coding Interview', function(){
   });
 
   describe('1.6: Rotate image ninety degrees', function(){
-    xit('should rotate image ninety degrees', function(){
-      
+    it('should rotate image ninety degrees', function(){
+      expect(imageRotation([[1,2,3],[4,5,6],[7,8,9]])).to.deep.equal([[7,4,1],[8,5,2],[9,6,3]]);
+    });
+    it('should rotate matrix containing any type of data', function(){
+      expect(imageRotation([['dog',2,234324234],[4,false,6],[7,8,[{test: false}]]])).to.deep.equal([[7,4,'dog'],[8,false,2],[[{test: false}],6,234324234]]);
     });
   });  
 

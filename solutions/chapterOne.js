@@ -6,6 +6,7 @@ if(module){
   module.exports.anagram = anagram;
   module.exports.replaceSpaces = replaceSpaces;
   module.exports.compressString = compressString;
+  module.exports.imageRotation = imageRotation;
   module.exports.zeroes = zeroes;
   module.exports.isRotation = isRotation;
 }
@@ -110,6 +111,27 @@ function compressString(str){
   return gain > 0 ? output : str;
 }
 
+// Key to remember matrix rotation can be done in layers where each layer represents the outter values.
+// AND you can do matrix replacement in place using a spiral approach
+// With the spiral approach, store a temp and work backwards pushing each value to replace the forward item.then replace the temp with the value behind it in the spiral, and then replace that value beh
+
+
+function imageRotation(array){
+  var layer, first, last, offset, temp;
+  for(layer = 0; layer < array.length/2; layer++){
+    first = layer;
+    last =  array.length - 1 - layer;
+    for(offset = 0; offset < last; offset++){
+      temp = array[first][first + offset];
+      array[first][first + offset] = array[last - offset][first];
+      array[last - offset][first] = array[last][last - offset];
+      array[last][last - offset] = array[first + offset][last];
+      array[first + offset][last] = temp;
+    }
+  }
+  return array;
+}
+
 // Consider setting booleans at each index for future reference rather than a hash with matching key/values and hasOwnProperty
 
 function zeroes(array){
@@ -157,27 +179,3 @@ function isRotation(s1,s2){
   }
   return false;
 }
-
-var a = 1,
-    b = function a(x) {
-        x && a(--x);
-    };
-console.log(a);
-
-
-function a(x) {
-    return x * 2;
-}
-var a;
-console.log(a);
-
-function b(x, y, a) {
-    arguments[2] = 10;
-    alert(a);
-}
-b(1, 2, 3);
-function a() {
-    console.log('testing');
-    alert(this);
-}
-a.call(null);
