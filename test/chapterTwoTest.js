@@ -47,7 +47,6 @@ describe('Chapter Two of Cracking the Coding Interview', function(){
   var linkedList, head;
   
   beforeEach(function(){
-    console.log('testing beforeEach');
     linkedList = new LinkedList();
     head = new linkedList.createNode(5);
     linkedList.addToTail(head);
